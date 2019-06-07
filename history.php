@@ -67,6 +67,48 @@
           </nav>
         </div>
        <div class="col-md-9" style="margin-top: 60px;">
+  <div class = "container">
+    <h3>Purchase History</h3>
+    <?php
+    require_once "config.php";
+    $CurrentUser = $_SESSION['currentUser'];
+    $sql = "SELECT Game_Name, sellPrice, Used, wID, date FROM Games NATURAL JOIN History WHERE UserName='$CurrentUser' AND type='Buy'";
+    if($result = mysqli_query($link, $sql)){
+      if(mysqli_num_rows($result) > 0){
+        echo "<table class='table table-light table-hover'>";
+            echo "<thead>";
+              echo "<tr>";
+                echo "<th>Name</th>";
+                echo "<th>Used</th>";
+                echo "<th>Price</th>";
+                echo "<th>wID</th>";
+		echo "<th>Date</th>";
+              echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            while($row = mysqli_fetch_array($result)){
+		  echo "<tr>";
+                  echo "<td>" . $row['Game_Name'] . "</td>";
+                  echo "<td>" . $row['Used'] . "</td>";
+                  echo "<td>" . $row['sellPrice'] . "</td>";
+                  echo "<td>" . $row['wID'] . "</td>";
+                  echo "<td>" . $row['date'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</tbody>";
+          echo "</table>";
+          mysqli_free_result($result);
+      } else {
+        echo "<p><em>No records were found.</em></p>";
+      }
+    } else {
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    }
+    mysqli_close($link);
+     ?>
+  </div>
+    </div>
+  </div>
       </div>
      </div>
     </div>
