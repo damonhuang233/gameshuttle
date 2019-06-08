@@ -72,7 +72,7 @@
     <?php
     require_once "config.php";
     $CurrentUser = ($_SESSION['currentUser']);
-    $sql = "SELECT Game_Name, Used, sellPrice, wID FROM Games NATURAL JOIN Cart WHERE UserName='$CurrentUser'";
+    $sql = "SELECT Game_ID, Game_Name, Used, sellPrice, wID FROM Games NATURAL JOIN Cart WHERE UserName='$CurrentUser'";
     if($result = mysqli_query($link, $sql)){
       if(mysqli_num_rows($result) > 0){
         echo "<table class='table table-light table-hover'>";
@@ -82,6 +82,7 @@
                 echo "<th>Used</th>";
                 echo "<th>Price</th>";
                 echo "<th>wID</th>";
+                echo "<th></th>";
               echo "</tr>";
             echo "</thead>";
             echo "<tbody>";
@@ -91,6 +92,7 @@
                   echo "<td>" . $row['Used'] . "</td>";
                   echo "<td>" . $row['sellPrice'] . "</td>";
                   echo "<td>" . $row['wID'] . "</td>";
+                  echo "<td><a href='dropgame.php?id=".$row['Game_ID']."'>Drop</a><td>";
                 echo "</tr>";
             }
             echo "</tbody>";

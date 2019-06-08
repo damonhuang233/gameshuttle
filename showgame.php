@@ -52,6 +52,7 @@
                 echo "<th>Price</th>";
                 echo "<th>wID</th>";
                 echo "<th></th>";
+                echo "<th></th>";
               echo "</tr>";
             echo "</thead>";
             echo "<tbody>";
@@ -62,6 +63,7 @@
                   echo "<td>" . $row['sellPrice'] . "</td>";
                   echo "<td>" . $row['wID'] . "</td>";
                   echo "<td><a href='buygame.php?id=".$row['Game_ID']."'>Buy Now</a><td>";
+                  echo "<td><a href='addtocart.php?id=".$row['Game_ID']."'>Add to Cart</a><td>";
                 echo "</tr>";
             }
             echo "</tbody>";

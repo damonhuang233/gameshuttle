@@ -4,6 +4,18 @@
 
   require_once "config.php";
 
+  $UserName = $_SESSION['currentUser'];
+  $sql = "SELECT * FROM CreditCard WHERE UserName = '$UserName'";
+  if($result = mysqli_query($link, $sql)){
+    if(mysqli_num_rows($result) == 0){
+      header("location: addcreditcard.php");
+      exit();
+    }
+  } else {
+    header("location: error.php");
+    exit();
+  }
+
   if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $sql = "INSERT INTO History VALUES (?, ?, ?, ?)";
