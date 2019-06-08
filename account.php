@@ -87,16 +87,16 @@
                 <a class="nav-link" href="#">Account Information</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="cart.php"> My Cart</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="history.php"> History</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="changepassword.php"> Change Password</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="updateemail.php"> Update Email</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cart.php"> My Cart</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="history.php"> History</a>
               </li>
             </ul>
           </nav>

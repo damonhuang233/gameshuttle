@@ -39,7 +39,7 @@
   </head>
   <body>
     <div class="container">
-      <h5> If you have any question, please contact the follwing locations: </h5>
+      <h5> If you have any question, please contact the following locations: </h5>
       <?php
       require_once "config.php";
       $sql = "SELECT * FROM Warehouse";
