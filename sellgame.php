@@ -35,7 +35,7 @@
     }
     $Used = trim($_POST["Used"]);
     if(empty($Used)){
-      $Used_err = "Please enter T or F.";
+      $Used_err = "Please select used or new.";
     }
     $buyPrice = trim($_POST["buyPrice"]);
     if(empty($buyPrice)){
@@ -132,21 +132,47 @@
                         <input type="text" name="Game_Name" class="form-control" value="<?php echo $Game_Name; ?>">
                         <span class="help-block"><?php echo $Game_Name_err;?></span>
                     </div>
-                    <div class="form-group <?php echo (!empty($Used_err)) ? 'has-error' : ''; ?>">
+                    <!-- <div class="form-group <?php echo (!empty($Used_err)) ? 'has-error' : ''; ?>">
                         <label>Used (Enter T of F)</label>
                         <input type="text" name="Used" class="form-control" value="<?php echo $Used; ?>">
                         <span class="help-block"><?php echo $Used_err;?></span>
-                    </div>
+                    </div> -->
                     <div class="form-group <?php echo (!empty($buyPrice_err)) ? 'has-error' : ''; ?>">
                         <label>Price</label>
                         <input type="text" name="buyPrice" class="form-control" value="<?php echo $buyPrice; ?>">
                         <span class="help-block"><?php echo $buyPrice_err;?></span>
                     </div>
-                    <div class="form-group <?php echo (!empty($wID_err)) ? 'has-error' : ''; ?>">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" class="custom-control-input" id="customRadio" name="Used" value="T">
+                      <label class="custom-control-label" for="customRadio">Used</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" class="custom-control-input" id="customRadio2" name="Used" value="F">
+                      <label class="custom-control-label" for="customRadio2">New</label>
+                    </div>
+                    <div>
+                      <span class="help-block"><?php echo $Used_err;?></span>
+                    </div>
+                    <!-- <div class="form-group <?php echo (!empty($wID_err)) ? 'has-error' : ''; ?>">
                         <label>wID (Enter 1 to 10)</label>
                         <input type="text" name="wID" class="form-control" value="<?php echo $wID; ?>">
                         <span class="help-block"><?php echo $wID_err;?></span>
-                    </div>
+                    </div> -->
+                    <div style="margin:20px;margin-left:0px">
+                      <select name="wID" class="custom-select-sm">
+                        <option selected value="1">Choose a warehouse to drop Game, default Texas</option>
+                        <option value="1">Texas</option>
+                        <option value="2">Oklahoma</option>
+                        <option value="3">Virginia</option>
+                        <option value="4">Wisconsin</option>
+                        <option value="5">New Jersey</option>
+                        <option value="5">Missouri</option>
+                        <option value="7">Louisiana</option>
+                        <option value="8">North Carolina</option>
+                        <option value="9">California</option>
+                        <option value="10">Arizona</option>
+                      </select>
+                   </div>
                     <input type="submit" class="btn btn-primary" value="Submit">
                     <a href="showgame.php" class="btn btn-default">Cancel</a>
                 </form>
