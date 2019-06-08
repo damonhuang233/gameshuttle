@@ -1,10 +1,5 @@
 <?php
   session_start();
-
-  if (!isset($_SESSION['currentUser'])){
-        header("location: login.php");
-        exit();
-  }
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +11,7 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
@@ -44,31 +39,35 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <nav class="navbar bg-white">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <h3>Account</h3>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="logout.php">Log Out</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="account.php">Account Information</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href=#> My Cart</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="history.php"> History</a>
-              </li>
-            </ul>
-          </nav>
+      <h2>Checkout</h2>
+      <?php
+      require_once "config.php";
+      $CurrentUser = ($_SESSION['currentUser']);
+      $sql = "SELECT Game_Name FROM Games NATURAL JOIN Cart WHERE UserName='$CurrentUser'";
+      if($result = mysqli_query($link, $sql)){
+        echo "<p>Game titles:</p>";
+        while($row = mysqli_fetch_array($result)){
+          echo "<p>" .$row['Game_Name']. "</p>";
+        }
+      } else {
+        header("location: error.php");
+      }
+      $sql = "SELECT SUM(sellPrice) AS total FROM Games NATURAL JOIN Cart WHERE UserName='$CurrentUser'";
+      if($result = mysqli_query($link, $sql)){
+        $row = mysqli_fetch_array($result);
+        echo "<p> Total: " .$row['total']. "$</p>";
+      } else {
+        header("location: error.php");
+      }
+      ?>
+      <form method="post">
+        <div class="form-group">
+          <label> Address </label>
+          <input type="text" name="Address" class="form-control">
         </div>
-       <div class="col-md-9" style="margin-top: 60px;">
-      </div>
-     </div>
+        <input type="submit" class="btn btn-primary" value="Submit">
+        <a href="cart.php" class="btn btn-default">Cancel</a>
+      </form>
     </div>
   </body>
 </html>

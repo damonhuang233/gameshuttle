@@ -68,7 +68,7 @@
         </div>
        <div class="col-md-9" style="margin-top: 60px;">
   <div class = "container">
-    <h3>Purchase History</h3>
+    <p>Purchase History:</p>
     <?php
     require_once "config.php";
     $CurrentUser = $_SESSION['currentUser'];

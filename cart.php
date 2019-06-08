@@ -68,7 +68,7 @@
         </div>
        <div class="col-md-9" style="margin-top: 60px;">
   <div style="width=50%" class = "container">
-    <h3>Cart</h3>
+    <p>Cart:</p>
     <?php
     require_once "config.php";
     $CurrentUser = ($_SESSION['currentUser']);
@@ -95,6 +95,7 @@
             }
             echo "</tbody>";
           echo "</table>";
+          echo "<a style='position:fixed;bottom:5px;right:5px;margin:10px;padding:15px 15px;' href='checkout.php' class='btn btn-info btn-md col-sm-1'><span class='glyphicon glyphicon-usd'></span>Checkout</a>";
           mysqli_free_result($result);
       } else {
         echo "<p><em>No records were found.</em></p>";
