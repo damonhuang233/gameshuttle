@@ -38,5 +38,23 @@
     </nav>
   </head>
   <body>
+    <div class="container">
+      <h3> Welcome to GameShuttle</h3>
+      <p>Popular Games</p>
+      <div class="row">
+        <div class="col">
+          <p>Devil May Cry 5</p>
+          <img src="pic\1.JPG" style="length:200px;height:300px;">
+        </div>
+        <div class="col">
+          <p>Red Dead Redemption II</p>
+          <img src="pic\2.JPG" style="length:200px;height:300px;">
+        </div>
+        <div class="col">
+          <p>God of War</p>
+          <img src="pic\3.JPG" style="length:200px;height:300px;">
+        </div>
+      </div>
+    <div>
   </body>
 </html>
