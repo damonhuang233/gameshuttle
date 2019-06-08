@@ -14,7 +14,7 @@
     $param_UserName = $_SESSION['currentUser'];
     $param_Game_ID = (int)$_GET['id'];
     if(mysqli_stmt_execute($stmt)){
-      header("location: showgame.php");
+      header("location: cart.php");
       exit();
     }
   }

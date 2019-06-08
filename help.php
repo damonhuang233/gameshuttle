@@ -38,5 +38,38 @@
     </nav>
   </head>
   <body>
+    <div class="container">
+      <h5> If you have any question, please contact the follwing locations: </h5>
+      <?php
+      require_once "config.php";
+      $sql = "SELECT * FROM Warehouse";
+      if($result = mysqli_query($link, $sql)){
+        if(mysqli_num_rows($result) > 0){
+          echo "<table class='table table-light table-hover'>";
+              echo "<thead>";
+                echo "<tr>";
+                  echo "<th>Warehouse Number</th>";
+                  echo "<th>State</th>";
+                  echo "<th>City</th>";
+                  echo "<th>Street</th>";
+                echo "</tr>";
+              echo "</thead>";
+              echo "<tbody>";
+              while($row = mysqli_fetch_array($result)){
+                  echo "<tr>";
+                    echo "<td>" . $row['wID'] . "</td>";
+                    echo "<td>" . $row['State'] . "</td>";
+                    echo "<td>" . $row['City'] . "</td>";
+                    echo "<td>" . $row['Street'] . "</td>";
+                  echo "</tr>";
+              }
+              echo "</tbody>";
+            echo "</table>";
+            mysqli_free_result($result);
+        }
+      }
+      mysqli_close($link);
+      ?>
+    </div>
   </body>
 </html>
