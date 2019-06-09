@@ -5,12 +5,14 @@
   } else {
 
   require_once "config.php";
+  $haveCard = 0;
   $UserName = $_SESSION['currentUser'];
   $sql = "SELECT Email FROM Accounts WHERE UserName = '$UserName'";
   if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
       $row = mysqli_fetch_array($result);
       $Email = $row['Email'];
+      $haveCard = 1;
       mysqli_free_result($result);
       } else {
       header("location: error.php");
@@ -23,7 +25,7 @@
   if($result = mysqli_query($link, $sql)){
       if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_array($result);
-        $Card = $row['CardNum'];
+        $Card = "<p>" . $row['CardNum'] . "</p> <p><a href = 'deletecreditcard.php'>Delete Credit Card<a></p>";
         mysqli_free_result($result);
         } else {
         $Card = "<a href='addcreditcard.php'> Add a credit card </a>";
